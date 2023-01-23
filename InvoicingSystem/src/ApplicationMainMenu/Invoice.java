@@ -1,6 +1,9 @@
 package ApplicationMainMenu;
 
+import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
@@ -9,13 +12,13 @@ public class Invoice implements Serializable {
 	String customerFullName;
 	Integer phoneNumber;
 	String date;
-	Integer numberOfItems= 0 ;
+	Integer numberOfItems = 0;
 	Integer totalAmount;
 	Integer paidAmount;
 	Integer balance;
 
 	public void createNewInvoice() {
-		
+		Report rep = new Report();
 		boolean choice = true;
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Shop name : ");
@@ -39,7 +42,7 @@ public class Invoice implements Serializable {
 			itemX.quantity = sc.nextInt();
 			itemX.qtyAmountPrice = itemX.unitPrice * itemX.quantity;
 			shopX.itemList.add(itemX);
-			numberOfItems ++;
+			numberOfItems++;
 			System.out.print("Do You Want Add Anouther Item write 1 if yes .. : ");
 			if (sc.nextInt() != 1) {
 				choice = false;
@@ -49,7 +52,7 @@ public class Invoice implements Serializable {
 		try {
 			FileOutputStream file = new FileOutputStream("Invoice.txt");
 			ObjectOutputStream out = new ObjectOutputStream(file);
-			out.writeObject(shopX);
+			out.writeObject(invoiceX);
 			out.flush();
 			out.close();
 			file.close();
@@ -69,17 +72,18 @@ public class Invoice implements Serializable {
 			total = total + i.qtyAmountPrice;
 		}
 		totalAmount = total;
-		
+
 		System.out.println("======================");
 		System.out.println("Total Price : " + total);
 		System.out.println("---------------------");
 		System.out.print(" >> Enter paid Amount :");
 		paidAmount = sc.nextInt();
-		balance =  paidAmount - totalAmount ;
+		balance = paidAmount - totalAmount;
 		System.out.println("======================");
 		System.out.println("Balance : " + balance);
 		sc.close();
-
+		rep.invoicesList.add(invoiceX);
+	
 	}
 
 }

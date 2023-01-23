@@ -36,7 +36,8 @@ public class Menu {
 				break;
 			case 4:
 				//Report: Statistics (No Of Items, No of Invoices, Total Sales)
-				System.out.println();
+				Report rep = new Report();
+				rep.getReport1();
 				
 				break;
 			case 5:

@@ -1,9 +1,10 @@
 package ApplicationMainMenu;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Shop {
+public class Shop implements Serializable {
 	String name;
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	String[] header = new String[4];

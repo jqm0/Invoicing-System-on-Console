@@ -3,9 +3,12 @@ package ApplicationMainMenu;
 import java.util.Scanner;
 
 public class Menu {
+	static Integer noOfItems;
+	static Integer noOfInvoices;
+	static Integer totalSales;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
+		
 		System.out.println("----------------------------------------");
 		System.out.println("----- Welcom to Invoicing System  ------");
 		System.out.println("Please Select on of the Following Option");
@@ -27,10 +30,14 @@ public class Menu {
 				System.out.println("Shop Settings");
 				break;
 			case 3:
-				System.out.println("Shop Settings");
+				//- Create New Invoice (Invoices should be save/serialized)
+				Invoice inv = new Invoice();
+				inv.createNewInvoice();
 				break;
 			case 4:
-				System.out.println("Shop Settings");
+				//Report: Statistics (No Of Items, No of Invoices, Total Sales)
+				System.out.println();
+				
 				break;
 			case 5:
 				System.out.println("Shop Settings");

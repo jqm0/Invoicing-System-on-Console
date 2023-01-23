@@ -5,16 +5,17 @@ import java.io.ObjectOutputStream;
 import java.io.Serializable;
 import java.util.Scanner;
 
-public class Invoice  implements Serializable {
+public class Invoice implements Serializable {
 	String customerFullName;
 	Integer phoneNumber;
 	String date;
-	Integer numberOfItems;
+	Integer numberOfItems= 0 ;
 	Integer totalAmount;
 	Integer paidAmount;
 	Integer balance;
 
 	public void createNewInvoice() {
+		
 		boolean choice = true;
 		Scanner sc = new Scanner(System.in);
 		System.out.print("Enter Shop name : ");
@@ -28,18 +29,21 @@ public class Invoice  implements Serializable {
 
 		while (choice) {
 			Item itemX = new Item();
-			System.out.print("Enter Item Name :");
+			System.out.print("Enter Item Name : ");
 			itemX.name = sc.next();
-			System.out.println("Enter Item id");
+			System.out.print("Enter Item id : ");
 			itemX.id = sc.nextInt();
-			System.out.println("Enter unitPrice");
+			System.out.print("Enter unitPrice : ");
 			itemX.unitPrice = sc.nextInt();
-			System.out.println("Enter quantity");
+			System.out.print("Enter quantity : ");
 			itemX.quantity = sc.nextInt();
 			itemX.qtyAmountPrice = itemX.unitPrice * itemX.quantity;
-			System.out.println("Do You Want Add Anouther Item write 1 if yes ..");
+			shopX.itemList.add(itemX);
+			numberOfItems ++;
+			System.out.print("Do You Want Add Anouther Item write 1 if yes .. : ");
 			if (sc.nextInt() != 1) {
 				choice = false;
+
 			}
 		}
 		try {
@@ -53,7 +57,29 @@ public class Invoice  implements Serializable {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		System.out.println("---------------- Invoice Details ----------------");
+		Integer total = 0;
+		for (Item i : shopX.itemList) {
+			System.out.println("=====================");
+			System.out.println("Item name : " + i.name);
+			System.out.println("Item ID : " + i.id);
+			System.out.println("Item name : " + i.quantity);
+			System.out.println("Item name : " + i.unitPrice);
+			System.out.println("Total Price for this Item " + i.qtyAmountPrice);
+			total = total + i.qtyAmountPrice;
+		}
+		totalAmount = total;
+		
+		System.out.println("======================");
+		System.out.println("Total Price : " + total);
+		System.out.println("---------------------");
+		System.out.print(" >> Enter paid Amount :");
+		paidAmount = sc.nextInt();
+		balance =  paidAmount - totalAmount ;
+		System.out.println("======================");
+		System.out.println("Balance : " + balance);
 		sc.close();
+
 	}
 
 }

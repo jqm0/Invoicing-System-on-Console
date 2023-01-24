@@ -21,11 +21,12 @@ public class Report implements Serializable {
 
 	public void getReport1() {
 
-		File file = new File("C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\Invoices\\ReportStatistics.txt");
+		File file = new File(
+				"C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\InvoicesStatistics\\ReportStatistics.txt");
 		try {
 			Scanner ss = new Scanner(file);
 			int i = 0;
-			while (ss.hasNext() && i <3) {
+			while (ss.hasNext() && i < 3) {
 				System.out.println(ss.nextLine().toString());
 				i++;
 			}
@@ -36,17 +37,18 @@ public class Report implements Serializable {
 		}
 
 	}
+
 	public void getAllReport() {
 		File directoryPath = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
 		File filesList[] = directoryPath.listFiles();
 		int i = 1;
 		for (File file : filesList) {
-			System.out.println("============ Invoice NO "+i + " ============ ");
+			System.out.println("============ Invoice NO " + i + " ============ ");
 			i++;
-			
+
 			try {
 				Scanner ss = new Scanner(file);
-		
+
 				while (ss.hasNext()) {
 					System.out.println(ss.nextLine().toString());
 				}
@@ -55,7 +57,34 @@ public class Report implements Serializable {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
+
+		}
+	}
+
+	public void search(Integer invoiceNo) {
+		File directoryPath = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
+		File filesList[] = directoryPath.listFiles();
+
+		for (File file : filesList) {
+			try {
+				Scanner ss = new Scanner(file);
+				int i = 0;
+				while (ss.hasNext()&& i <1) {
+					String [] a = ss.nextLine().split(" ");
+					if(invoiceNo == Integer.parseInt(a[3])) {
+						while (ss.hasNext()) {
+							System.out.println(ss.nextLine());
+						}
+								
+					}
+					i++;
+				}
+				ss.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 		}
 	}
 

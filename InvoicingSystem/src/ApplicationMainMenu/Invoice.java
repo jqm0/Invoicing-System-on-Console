@@ -10,11 +10,13 @@ import java.util.Scanner;
 public class Invoice {
 	String customerFullName;
 	Integer phoneNumber;
-    Date date = new Date();  
+	Date date;
 	Integer numberOfItems = 0;
 	Integer totalAmount;
 	Integer paidAmount;
 	Integer balance;
+	Integer idInvoice;
+    Integer txtFileCount = 1;
 
 	public void createNewInvoice() {
 		Report rep = new Report();
@@ -35,6 +37,7 @@ public class Invoice {
 			itemX.name = sc.next();
 			System.out.print("Enter Item id : ");
 			itemX.id = sc.nextInt();
+			idInvoice = itemX.id;
 			System.out.print("Enter unitPrice : ");
 			itemX.unitPrice = sc.nextInt();
 			System.out.print("Enter quantity : ");
@@ -71,31 +74,50 @@ public class Invoice {
 		System.out.println("Balance : " + balance);
 		sc.close();
 		rep.invoicesList.add(invoiceX);
-		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
+		//_________________________________________
+		File directory = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
+        File[] files = directory.listFiles();
+
+        if(files.length > 0) {
+        	 for (File f : files) {
+                 if (f.getName().endsWith(".txt")) {
+                     txtFileCount++;
+                 }
+             }
+        }
+       
+       
+        //--------------------------------------------------
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Integer numberOfInvoice = rep.invoicesList.size();
-	
-		File fileStatistics = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\ReportStatistics.txt");
-		File fileAllReport = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\allReport.txt");
+		
+		File fileStatistics = new File(
+				"C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\InvoicesStatistics\\ReportStatistics.txt");
+		File fileAllReport = new File(
+				"C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\allReport" + idInvoice + ".txt");
 		try {
 			FileWriter fw = new FileWriter(fileAllReport);
 			FileWriter fWrite = new FileWriter(fileStatistics);
-			//File for fourth option
-			
-			fWrite.write("No Of Items : "+ numberOfItems.toString()+ "\r\n");
-			fWrite.write("No of Invoices : " +numberOfInvoice.toString()+ "\r\n");
-			fWrite.write("Total Sales: "+ totalAmount.toString());
-			fWrite.close();
-			//-------------------------------------------------------//
-			//file for 5th option
-			fw.write("Invoice No : "+ numberOfItems.toString()+ "\r\n");
-			fw.write("Invoice Date : " +  formatter.format(date).toString()+ "\r\n");
-			fw.write("Customer Name : " + customerFullName.toUpperCase()+ "\r\n");
-			fw.write("No Of Items : "+ numberOfItems.toString()+ "\r\n");
-			fw.write("Total : "+ totalAmount.toString()+ "\r\n");
-			fw.write("Balance : " + balance.toString());
-			
-			fw.close();
+			// File for fourth option
 
+			fWrite.write("No Of Items : " + numberOfItems.toString() + "\r\n");
+			fWrite.write("No of Invoices : " + numberOfInvoice.toString() + "\r\n");
+			fWrite.write("Total Sales: " + totalAmount.toString());
+			fWrite.close();
+		
+			// -------------------------------------------------------//
+			// file for 5th option
+			date = new Date();
+			
+			fw.write("Invoice No : " +txtFileCount + "\r\n");
+			fw.write("Invoice Date : " + formatter.format(date).toString() + "\r\n");
+			fw.write("Customer Name : " + customerFullName.toUpperCase() + "\r\n");
+			fw.write("No Of Items : " + numberOfItems.toString() + "\r\n");
+			fw.write("Total : " + totalAmount.toString() + "\r\n");
+			fw.write("Balance : " + balance.toString());
+
+			fw.close();
+		
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

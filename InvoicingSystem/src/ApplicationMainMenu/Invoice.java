@@ -16,7 +16,7 @@ public class Invoice {
 	Integer paidAmount;
 	Integer balance;
 	Integer idInvoice;
-    Integer txtFileCount = 1;
+	Integer txtFileCount = 1;
 
 	public void createNewInvoice() {
 		Report rep = new Report();
@@ -53,12 +53,13 @@ public class Invoice {
 		}
 		System.out.println("---------------- Invoice Details ----------------");
 		Integer total = 0;
+
 		for (Item i : shopX.itemList) {
 			System.out.println("=====================");
 			System.out.println("Item name : " + i.name);
 			System.out.println("Item ID : " + i.id);
-			System.out.println("Item name : " + i.quantity);
-			System.out.println("Item name : " + i.unitPrice);
+			System.out.println("Item quantity : " + i.quantity);
+			System.out.println("Item unitPrice : " + i.unitPrice);
 			System.out.println("Total Price for this Item " + i.qtyAmountPrice);
 			total = total + i.qtyAmountPrice;
 		}
@@ -74,20 +75,20 @@ public class Invoice {
 		System.out.println("Balance : " + balance);
 		sc.close();
 		rep.invoicesList.add(invoiceX);
-		//_________________________________________
+		// _________________________________________
+		//This to get invoice number in same folder
 		File directory = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
-        File[] files = directory.listFiles();
+		File[] files = directory.listFiles();
 
-        if(files.length > 0) {
-        	 for (File f : files) {
-                 if (f.getName().endsWith(".txt")) {
-                     txtFileCount++;
-                 }
-             }
-        }
-       
-       
-        //--------------------------------------------------
+		if (files.length > 0) {
+			for (File f : files) {
+				if (f.getName().endsWith(".txt")) {
+					txtFileCount++;
+				}
+			}
+		}
+
+		// --------------------------------------------------
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
 		Integer numberOfInvoice = rep.invoicesList.size();
 		
@@ -104,12 +105,12 @@ public class Invoice {
 			fWrite.write("No of Invoices : " + numberOfInvoice.toString() + "\r\n");
 			fWrite.write("Total Sales: " + totalAmount.toString());
 			fWrite.close();
-		
+
 			// -------------------------------------------------------//
 			// file for 5th option
 			date = new Date();
-			
-			fw.write("Invoice No : " +txtFileCount + "\r\n");
+
+			fw.write("Invoice No : " + txtFileCount + "\r\n");
 			fw.write("Invoice Date : " + formatter.format(date).toString() + "\r\n");
 			fw.write("Customer Name : " + customerFullName.toUpperCase() + "\r\n");
 			fw.write("No Of Items : " + numberOfItems.toString() + "\r\n");
@@ -117,13 +118,13 @@ public class Invoice {
 			fw.write("Balance : " + balance.toString());
 
 			fw.close();
-		
+
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
-		// 4- Report: Statistics (No Of Items, No of Invoices, Total Sales)
+		
 
 	}
 

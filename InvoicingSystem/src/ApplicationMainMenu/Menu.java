@@ -8,7 +8,7 @@ public class Menu {
 		Scanner sc = new Scanner(System.in);
 		Shop shopX = new Shop();
 		boolean repeat = true;
-	
+
 		System.out.println("----------------------------------------");
 		System.out.println("----- Welcom to Invoicing System  ------");
 		while (repeat) {
@@ -24,7 +24,7 @@ public class Menu {
 
 			if (sc.hasNextInt()) {
 				boolean repeat2 = true;
-		
+
 				int option = sc.nextInt();
 				switch (option) {
 				case 1:
@@ -73,6 +73,15 @@ public class Menu {
 							switch (option3) {
 							case 1:
 								Item itemX = new Item();
+								System.out.print("Item name : ");
+								itemX.name = sc.next();
+								System.out.print("Item  unitPrice : ");
+								itemX.unitPrice = sc.nextInt();
+								System.out.print("Item ID : ");
+								itemX.id = sc.nextInt();
+								System.out.print("Item   quantity : ");
+								itemX.quantity = sc.nextInt();
+								itemX.qtyAmountPrice = itemX.quantity * itemX.unitPrice;
 								shopX.addItem(itemX);
 								break;
 							case 2:
@@ -81,9 +90,9 @@ public class Menu {
 								shopX.deleteItem(itemDel);
 								break;
 							case 3:
-								System.out.print("Write the item name  ");
+								System.out.print("Write the item name :  ");
 								String itemName = sc.next();
-								System.out.print("Write the new price  ");
+								System.out.print("Write the new price : ");
 								int newPrice = sc.nextInt();
 								shopX.changeItemPrice(itemName, newPrice);
 								break;
@@ -100,9 +109,12 @@ public class Menu {
 					break;
 				case 3:
 					// - Create New Invoice (Invoices should be save/serialized)
+					
 					Invoice invoiceA = new Invoice();
 					invoiceA.createNewInvoice();
-					repeat = false;
+					//In this case i have an issue that the menu will repeated infinte times..
+	
+					repeat = false;// i solved this by exiting the program but details of invoice will be saved in txt files..
 					break;
 				case 4:
 					// Report: Statistics (No Of Items, No of Invoices, Total Sales)
@@ -119,7 +131,7 @@ public class Menu {
 					rep3.search(sc.nextInt());
 					break;
 				case 7:
-					System.out.println("Shop Settings");
+					System.out.println("Program Statistics");
 					break;
 				case 8:
 					System.out.println(" >> Are you sure you want to exit?");

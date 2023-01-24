@@ -1,7 +1,8 @@
 package ApplicationMainMenu;
 
+import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Shop {
 	String name;
@@ -19,7 +20,6 @@ public class Shop {
 
 	public void addItem(Item newItem) {
 		itemList.add(newItem);
-
 	}
 
 	public void deleteItem(String itemToBeDeleted) {

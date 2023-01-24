@@ -1,15 +1,11 @@
 package ApplicationMainMenu;
 
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Report implements Serializable {
+public class Report  {
 	ArrayList<Invoice> invoicesList = new ArrayList<Invoice>();
 	Integer noOfInvoices;
 	Integer noOfItems;

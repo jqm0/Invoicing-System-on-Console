@@ -1,8 +1,8 @@
 package ApplicationMainMenu;
 
-import java.io.Serializable;
 
-public class Item implements Serializable {
+
+public class Item {
 	public String name;
 	Integer unitPrice ;
 	Integer id;

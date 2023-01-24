@@ -1,14 +1,14 @@
 package ApplicationMainMenu;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Shop implements Serializable {
+public class Shop {
 	String name;
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	String[] header = new String[4];
 	Integer noOfInvoices;
+
 	public void setShopName(String shopName) {
 		this.name = shopName;
 	}
@@ -19,20 +19,26 @@ public class Shop implements Serializable {
 
 	public void addItem(Item newItem) {
 		itemList.add(newItem);
-	
+
 	}
 
-	public void deleteItem(Item itemToBeDeleted) {
-		for (Item itemI : itemList) {
-			if (itemToBeDeleted.name.equalsIgnoreCase(itemI.name)) {
-				itemList.remove(itemToBeDeleted);
-				System.out.println("Item  has been Deleted ");
-			}
+	public void deleteItem(String itemToBeDeleted) {
+		if (itemList.size() > 0) {
+			for (Item itemI : itemList) {
+				if (itemToBeDeleted.equalsIgnoreCase(itemI.name)) {
+					itemList.remove(itemI);
+					System.out.println("Item  has been Deleted ");
+				}
 
+			}
+		}
+		else {
+			System.out.println(" >>>> There is no items ;(");
+			System.out.println("--------------------------");
 		}
 	}
 
-	public void changeItemPrice(int newPrice, String itemName) {
+	public void changeItemPrice(String itemName, int newPrice) {
 		for (Item i : itemList) {
 			if (itemName.equalsIgnoreCase(i.name)) {
 				i.unitPrice = newPrice;
@@ -41,24 +47,19 @@ public class Shop implements Serializable {
 		}
 	}
 
-	public void setInvoiceHeader() {
-
-		Scanner sc = new Scanner(System.in);
-		System.out.print("Enter Tel ");
-		header[0] = sc.next();
-		System.out.print("Enter Fax ");
-		header[1] = sc.next();
-		System.out.print("Enter Email ");
-		header[2] = sc.next();
-		System.out.print("Enter Website ");
-		header[3] = sc.next();
-		sc.close();
-
+	public void setInvoiceHeader(String tel, String fax, String mail, String website) {
+		header[0] = tel;
+		header[1] = fax;
+		header[2] = mail;
+		header[3] = website;
 	}
 
 	public void reportAllItems() {
 		System.out.println("----------------------------------");
 		System.out.println("---------- Items Report ----------");
+		if(!itemList.isEmpty()) {
+			
+		
 		for (Item i : itemList) {
 			System.out.println("----------------------------------");
 			System.out.println("Item Name : " + i.name);
@@ -68,6 +69,9 @@ public class Shop implements Serializable {
 			System.out.println("Item Quantity Amount Price : " + i.qtyAmountPrice);
 
 		}
-		System.out.println("----------------------------------");
+		System.out.println("----------------------------------");}
+		else {
+			System.out.println("------------There is no Items -------------");
+		}
 	}
 }

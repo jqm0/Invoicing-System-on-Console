@@ -1,8 +1,9 @@
 package ApplicationMainMenu;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
-public class Menu {
+public class Menu implements Serializable {
 	static Integer noOfItems;
 	static Integer noOfInvoices;
 	static Integer totalSales;

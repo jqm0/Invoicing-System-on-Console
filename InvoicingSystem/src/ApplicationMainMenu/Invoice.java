@@ -1,14 +1,11 @@
 package ApplicationMainMenu;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.Scanner;
 
-public class Invoice implements Serializable {
+public class Invoice {
 	String customerFullName;
 	Integer phoneNumber;
 	String date;
@@ -49,17 +46,6 @@ public class Invoice implements Serializable {
 
 			}
 		}
-		try {
-			FileOutputStream file = new FileOutputStream("Invoice.txt");
-			ObjectOutputStream out = new ObjectOutputStream(file);
-			out.writeObject(invoiceX);
-			out.flush();
-			out.close();
-			file.close();
-			System.out.println("Serialized Done and saved");
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		System.out.println("---------------- Invoice Details ----------------");
 		Integer total = 0;
 		for (Item i : shopX.itemList) {
@@ -83,7 +69,25 @@ public class Invoice implements Serializable {
 		System.out.println("Balance : " + balance);
 		sc.close();
 		rep.invoicesList.add(invoiceX);
-	
+		Integer numberOfInvoice = rep.invoicesList.size();
+		File f = new File("ReportStatistics.txt");
+		try {
+
+			FileWriter fw = new FileWriter(f);
+			
+			fw.write("No Of Items : "+ numberOfItems.toString()+ "\r\n");
+			fw.write("No of Invoices : " +numberOfInvoice.toString()+ "\r\n");
+			fw.write("Total Sales : " + totalAmount.toString());
+			
+			fw.close();
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		// 4- Report: Statistics (No Of Items, No of Invoices, Total Sales)
+
 	}
 
 }

@@ -1,11 +1,15 @@
 package ApplicationMainMenu;
 
+import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Scanner;
 
-public class Report {
+public class Report implements Serializable {
 	ArrayList<Invoice> invoicesList = new ArrayList<Invoice>();
 	Integer noOfInvoices;
 	Integer noOfItems;
@@ -17,21 +21,23 @@ public class Report {
 
 	public void getReport1() {
 
+		File file = new File("ReportStatistics.txt");
 		try {
-			// Reading the object from a file
-			FileInputStream file = new FileInputStream("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoice.txt");
-			ObjectInputStream in = new ObjectInputStream(file);
-			Invoice object1 = (Invoice) in.readObject();
-			in.close();
-			file.close();
-			System.out.println("Object has been deserialized ");
-			System.out.println("Number Of Items :  " + object1.numberOfItems);
-			System.out.println("Total Sales:  " + object1.totalAmount);
-		} catch (IOException ex) {
-			System.out.println("IOException is caught");
-		} catch (ClassNotFoundException ex) {
-			System.out.println("ClassNotFoundException is caught");
+			Scanner ss = new Scanner(file);
+			int i = 0;
+			while (ss.hasNext() && i <3) {
+				System.out.println(ss.nextLine().toString());
+				i++;
+			}
+			ss.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
 	}
+	public void getReport2() {
+		
+	}
+
 }

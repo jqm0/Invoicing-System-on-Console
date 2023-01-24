@@ -42,7 +42,8 @@ public class Menu implements Serializable {
 				
 				break;
 			case 5:
-				System.out.println("Shop Settings");
+				Report rep2 = new Report();
+				rep2.getAllReport();
 				break;
 			case 6:
 				System.out.println("Shop Settings");

@@ -21,7 +21,7 @@ public class Report implements Serializable {
 
 	public void getReport1() {
 
-		File file = new File("ReportStatistics.txt");
+		File file = new File("C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\Invoices\\ReportStatistics.txt");
 		try {
 			Scanner ss = new Scanner(file);
 			int i = 0;
@@ -36,8 +36,27 @@ public class Report implements Serializable {
 		}
 
 	}
-	public void getReport2() {
+	public void getAllReport() {
+		File directoryPath = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
+		File filesList[] = directoryPath.listFiles();
+		int i = 1;
+		for (File file : filesList) {
+			System.out.println("============ Invoice NO "+i + " ============ ");
+			i++;
+			
+			try {
+				Scanner ss = new Scanner(file);
 		
+				while (ss.hasNext()) {
+					System.out.println(ss.nextLine().toString());
+				}
+				ss.close();
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 }

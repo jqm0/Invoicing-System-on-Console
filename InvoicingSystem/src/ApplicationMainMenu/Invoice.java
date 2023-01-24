@@ -3,12 +3,14 @@ package ApplicationMainMenu;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Invoice {
 	String customerFullName;
 	Integer phoneNumber;
-	String date;
+    Date date = new Date();  
 	Integer numberOfItems = 0;
 	Integer totalAmount;
 	Integer paidAmount;
@@ -23,7 +25,7 @@ public class Invoice {
 		shopX.setShopName(sc.next());
 		Invoice invoiceX = new Invoice();
 		System.out.print("Enter customer Full Name : ");
-		invoiceX.customerFullName = sc.next();
+		customerFullName = sc.next();
 		System.out.print("Enter phone Number : ");
 		invoiceX.phoneNumber = sc.nextInt();
 
@@ -69,15 +71,28 @@ public class Invoice {
 		System.out.println("Balance : " + balance);
 		sc.close();
 		rep.invoicesList.add(invoiceX);
+		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss"); 
 		Integer numberOfInvoice = rep.invoicesList.size();
-		File f = new File("ReportStatistics.txt");
+	
+		File fileStatistics = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\ReportStatistics.txt");
+		File fileAllReport = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\allReport.txt");
 		try {
-
-			FileWriter fw = new FileWriter(f);
+			FileWriter fw = new FileWriter(fileAllReport);
+			FileWriter fWrite = new FileWriter(fileStatistics);
+			//File for fourth option
 			
+			fWrite.write("No Of Items : "+ numberOfItems.toString()+ "\r\n");
+			fWrite.write("No of Invoices : " +numberOfInvoice.toString()+ "\r\n");
+			fWrite.write("Total Sales: "+ totalAmount.toString());
+			fWrite.close();
+			//-------------------------------------------------------//
+			//file for 5th option
+			fw.write("Invoice No : "+ numberOfItems.toString()+ "\r\n");
+			fw.write("Invoice Date : " +  formatter.format(date).toString()+ "\r\n");
+			fw.write("Customer Name : " + customerFullName.toUpperCase()+ "\r\n");
 			fw.write("No Of Items : "+ numberOfItems.toString()+ "\r\n");
-			fw.write("No of Invoices : " +numberOfInvoice.toString()+ "\r\n");
-			fw.write("Total Sales : " + totalAmount.toString());
+			fw.write("Total : "+ totalAmount.toString()+ "\r\n");
+			fw.write("Balance : " + balance.toString());
 			
 			fw.close();
 

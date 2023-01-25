@@ -1,5 +1,8 @@
 package ApplicationMainMenu;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Shop {
@@ -18,6 +21,24 @@ public class Shop {
 
 	public void addItem(Item newItem) {
 		itemList.add(newItem);
+		File items = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\items\\item.txt");
+		try {
+			FileWriter fw = new FileWriter(items);
+			for (Item i : itemList) {
+				fw.write(i.name + "\r\n");
+				fw.write(i.id.toString() + "\r\n");
+				fw.write(i.quantity.toString() + "\r\n");
+				fw.write(i.unitPrice.toString() + "\r\n");
+				fw.write(i.qtyAmountPrice.toString() + "\r\n");
+			}
+
+			fw.close();
+			
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
 
 	public void deleteItem(String itemToBeDeleted) {
@@ -29,12 +50,9 @@ public class Shop {
 				System.out.println("--------------------------");
 				break;
 			}
-			
+
 		}
 
-		
-
-		
 	}
 
 	public void changeItemPrice(String itemName, int newPrice) {

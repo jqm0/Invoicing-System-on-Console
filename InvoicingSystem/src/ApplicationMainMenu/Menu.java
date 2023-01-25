@@ -176,33 +176,27 @@ public class Menu {
 					}
 					for (int i = 0; i < numbers.size(); i++) {
 						if (i == 0) {
-							System.out.println(
-									"The option 1 has been entered " + (numbers.get(i) + countCase1) + " Times ");
+							System.out.println("The option 1 has been entered " + (numbers.get(i) + countCase1) + " Times ");
 						}
 						if (i == 1) {
-							System.out.println(
-									"The option 2 has been entered " + (numbers.get(i) + countCase2) + " Times ");
+							System.out.println("The option 2 has been entered " + (numbers.get(i) + countCase2) + " Times ");
 						}
 						if (i == 2) {
-							System.out.println(
-									"The option 3 has been entered " + (numbers.get(i) + countCase3) + " Times ");
+							System.out.println("The option 3 has been entered " + (numbers.get(i) + countCase3) + " Times ");
 						}
 						if (i == 3) {
-							System.out.println(
-									"The option 4 has been entered " + (numbers.get(i) + countCase4) + " Times ");
+							System.out.println("The option 4 has been entered " + (numbers.get(i) + countCase4) + " Times ");
 						}
 						if (i == 4) {
-							System.out.println(
-									"The option 5 has been entered " + (numbers.get(i) + countCase5) + " Times ");
+							System.out.println("The option 5 has been entered " + (numbers.get(i) + countCase5) + " Times ");
 						}
 						if (i == 5) {
-							System.out.println(
-									"The option 6 has been entered " + (numbers.get(i) + countCase6) + " Times ");
+							System.out.println("The option 6 has been entered " + (numbers.get(i) + countCase6) + " Times ");
 						}
 						if (i == 6) {
-							System.out.println(
-									"The option 7 has been entered " + (numbers.get(i) + countCase7) + " Times ");
+							System.out.println("The option 7 has been entered " + (numbers.get(i) + countCase7) + " Times ");
 						}
+						
 
 					}
 					break;

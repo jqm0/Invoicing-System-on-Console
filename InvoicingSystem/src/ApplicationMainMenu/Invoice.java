@@ -90,8 +90,6 @@ public class Invoice {
 
 		// --------------------------------------------------
 		SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-		Integer numberOfInvoice = rep.invoicesList.size();
-		
 		File fileStatistics = new File(
 				"C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\InvoicesStatistics\\ReportStatistics.txt");
 		File fileAllReport = new File(
@@ -102,7 +100,7 @@ public class Invoice {
 			// File for fourth option
 
 			fWrite.write("No Of Items : " + numberOfItems.toString() + "\r\n");
-			fWrite.write("No of Invoices : " + numberOfInvoice.toString() + "\r\n");
+			fWrite.write("No of Invoices : " + txtFileCount.toString() + "\r\n");
 			fWrite.write("Total Sales: " + totalAmount.toString());
 			fWrite.close();
 

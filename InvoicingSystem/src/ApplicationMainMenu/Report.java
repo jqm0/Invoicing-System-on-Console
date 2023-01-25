@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Report  {
+public class Report {
 	ArrayList<Invoice> invoicesList = new ArrayList<Invoice>();
 	Integer noOfInvoices;
 	Integer noOfItems;
@@ -22,7 +22,7 @@ public class Report  {
 		try {
 			Scanner ss = new Scanner(file);
 			while (ss.hasNext()) {
-				System.out.println(ss.nextLine().toString());	
+				System.out.println(ss.nextLine().toString());
 			}
 			ss.close();
 		} catch (FileNotFoundException e) {
@@ -58,20 +58,21 @@ public class Report  {
 	public void search(Integer invoiceNo) {
 		File directoryPath = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
 		File filesList[] = directoryPath.listFiles();
-
+		System.out.println("----------------------------------");
 		for (File file : filesList) {
 			try {
 				Scanner ss = new Scanner(file);
 				int i = 0;
-				while (ss.hasNext()&& i <1) {
-					String [] a = ss.nextLine().split(" ");
-					if(invoiceNo == Integer.parseInt(a[3])) {
+				while (ss.hasNext() && i < 1) {
+					String[] a = ss.nextLine().split(" ");
+					if (invoiceNo == Integer.parseInt(a[3])) {
 						while (ss.hasNext()) {
 							System.out.println(ss.nextLine());
 						}
-								
+
 					}
 					i++;
+					
 				}
 				ss.close();
 			} catch (FileNotFoundException e) {
@@ -80,6 +81,8 @@ public class Report  {
 			}
 
 		}
+		System.out.println("----------------------------------");
+
 	}
 
 }

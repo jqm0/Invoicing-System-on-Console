@@ -21,10 +21,8 @@ public class Report  {
 				"C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\InvoicesStatistics\\ReportStatistics.txt");
 		try {
 			Scanner ss = new Scanner(file);
-			int i = 0;
-			while (ss.hasNext() && i < 3) {
-				System.out.println(ss.nextLine().toString());
-				i++;
+			while (ss.hasNext()) {
+				System.out.println(ss.nextLine().toString());	
 			}
 			ss.close();
 		} catch (FileNotFoundException e) {

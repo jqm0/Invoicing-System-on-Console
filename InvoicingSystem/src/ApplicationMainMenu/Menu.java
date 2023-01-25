@@ -1,9 +1,10 @@
 package ApplicationMainMenu;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu {
@@ -161,7 +162,49 @@ public class Menu {
 							+ "The option 7 has been entered " + countCase7 + " Times " + "\r\n");
 
 					System.out.println("===== Program Statistics for current Run with Previous Run =====");
+					ArrayList<Integer> numbers = new ArrayList<Integer>();
+					try {
+						Scanner scanner = new Scanner(new File(
+								"C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\countEnteredTimes\\count.txt"));
+						while (scanner.hasNextLine()) {
+							int number = Integer.parseInt(scanner.nextLine());
+							numbers.add(number);
+						}
+						scanner.close();
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+					}
+					for (int i = 0; i < numbers.size(); i++) {
+						if (i == 0) {
+							System.out.println(
+									"The option 1 has been entered " + (numbers.get(i) + countCase1) + " Times ");
+						}
+						if (i == 1) {
+							System.out.println(
+									"The option 2 has been entered " + (numbers.get(i) + countCase2) + " Times ");
+						}
+						if (i == 2) {
+							System.out.println(
+									"The option 3 has been entered " + (numbers.get(i) + countCase3) + " Times ");
+						}
+						if (i == 3) {
+							System.out.println(
+									"The option 4 has been entered " + (numbers.get(i) + countCase4) + " Times ");
+						}
+						if (i == 4) {
+							System.out.println(
+									"The option 5 has been entered " + (numbers.get(i) + countCase5) + " Times ");
+						}
+						if (i == 5) {
+							System.out.println(
+									"The option 6 has been entered " + (numbers.get(i) + countCase6) + " Times ");
+						}
+						if (i == 6) {
+							System.out.println(
+									"The option 7 has been entered " + (numbers.get(i) + countCase7) + " Times ");
+						}
 
+					}
 					break;
 				case 8:
 					countCase8++;

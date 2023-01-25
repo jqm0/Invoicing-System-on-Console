@@ -118,6 +118,7 @@ public class Invoice {
 			fw.write("Balance : " + balance.toString());
 
 			fw.close();
+			
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -126,6 +127,7 @@ public class Invoice {
 
 		
 
+	
 	}
 
 }

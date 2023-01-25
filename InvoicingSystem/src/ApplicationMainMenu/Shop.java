@@ -1,7 +1,5 @@
 package ApplicationMainMenu;
 
-import java.io.File;
-import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class Shop {
@@ -23,25 +21,27 @@ public class Shop {
 	}
 
 	public void deleteItem(String itemToBeDeleted) {
-		if (itemList.size() > 0) {
-			for (Item itemI : itemList) {
-				if (itemToBeDeleted.equalsIgnoreCase(itemI.name)) {
-					itemList.remove(itemI);
-					System.out.println("Item  has been Deleted ");
-				}
-
+		for (int i = 0; i < itemList.size(); i++) {
+			Item item = itemList.get(i);
+			if (item.name.equalsIgnoreCase(itemToBeDeleted)) {
+				itemList.remove(i);
+				System.out.println("Item  has been Deleted ");
+				System.out.println("--------------------------");
+				break;
 			}
+			
 		}
-		else {
-			System.out.println(" >>>> There is no items ;(");
-			System.out.println("--------------------------");
-		}
+
+		
+
+		
 	}
 
 	public void changeItemPrice(String itemName, int newPrice) {
 		for (Item i : itemList) {
 			if (itemName.equalsIgnoreCase(i.name)) {
 				i.unitPrice = newPrice;
+				i.qtyAmountPrice = i.unitPrice * i.quantity;
 				System.out.println("Item has been changed it's price");
 			}
 		}
@@ -57,20 +57,19 @@ public class Shop {
 	public void reportAllItems() {
 		System.out.println("----------------------------------");
 		System.out.println("---------- Items Report ----------");
-		if(!itemList.isEmpty()) {
-			
-		
-		for (Item i : itemList) {
-			System.out.println("----------------------------------");
-			System.out.println("Item Name : " + i.name);
-			System.out.println("Item ID : " + i.id);
-			System.out.println("Item Quantity : " + i.quantity);
-			System.out.println("Item Price : " + i.unitPrice);
-			System.out.println("Item Quantity Amount Price : " + i.qtyAmountPrice);
+		if (!itemList.isEmpty()) {
 
-		}
-		System.out.println("----------------------------------");}
-		else {
+			for (Item i : itemList) {
+				System.out.println("----------------------------------");
+				System.out.println("Item Name : " + i.name);
+				System.out.println("Item ID : " + i.id);
+				System.out.println("Item Quantity : " + i.quantity);
+				System.out.println("Item Price : " + i.unitPrice);
+				System.out.println("Item Quantity Amount Price : " + i.qtyAmountPrice);
+
+			}
+			System.out.println("----------------------------------");
+		} else {
 			System.out.println("------------There is no Items -------------");
 		}
 	}

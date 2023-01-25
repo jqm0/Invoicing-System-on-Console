@@ -28,12 +28,12 @@ public class Menu {
 			System.out.println("----------------------------------------");
 			System.out.println("Please Select on of the Following Option");
 			System.out.println("1- Shop Settings\r\n" + "2- Manage Shop Items\r\n"
-					+ "3- Create New Invoice (Invoices should be save/serialized)\r\n"
-					+ "4- Report: Statistics (No Of Items, No of Invoices, Total Sales)\r\n"
-					+ "5- Report: All Invoices ( Invoice No, Invoice Date, Customer Name, No of items, Total, Balance)\r\n"
+					+ "3- Create New Invoice \r\n"
+					+ "4- Report: Statistics \r\n"
+					+ "5- Report: All Invoices \r\n"
 					+ "6- Search (1) Invoice (Search by Invoice No and Report All Invoice details with items)\r\n"
-					+ "7- Program Statistics (Print each Main Menu Item with how many number selected).\r\n"
-					+ "8- Exit (Are you sure you want to exit? If yes, program ends, if No , then main menu reprinted again) ");
+					+ "7- Program Statistics .\r\n"
+					+ "8- Exit ");
 
 			if (sc.hasNextInt()) {
 				boolean repeat2 = true;
@@ -52,6 +52,7 @@ public class Menu {
 							switch (option2) {
 							case 1:
 								shopX.load();
+								System.out.println("Items and invoices has been loaded");
 								break;
 							case 2:
 

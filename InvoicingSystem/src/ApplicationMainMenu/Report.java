@@ -16,7 +16,7 @@ public class Report {
 	}
 
 	public void getReport1() {
-
+		System.out.println("----------------------------------");
 		File file = new File(
 				"C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\InvoicesStatistics\\ReportStatistics.txt");
 		try {
@@ -29,6 +29,7 @@ public class Report {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("----------------------------------");
 
 	}
 
@@ -37,14 +38,18 @@ public class Report {
 		File filesList[] = directoryPath.listFiles();
 		int i = 1;
 		for (File file : filesList) {
-			System.out.println("============ Invoice NO " + i + " ============ ");
+			System.out.println("\t---------------------------------------- Invoice NO "+ i + " ----------------------------------------");
+		//	System.out.println("\\t\\t\\t\\t============ Invoice NO " + i + " ============ ");
+			System.out.println("\t----------------------------------------" + "Email :shop@icloud.com ----------------------------------------");
+			System.out.println("\t----------------------------------------" + "Website:www.shop.com ----------------------------------------");
+			
 			i++;
 
 			try {
 				Scanner ss = new Scanner(file);
 
 				while (ss.hasNext()) {
-					System.out.println(ss.nextLine().toString());
+					System.out.println("\t" + ss.nextLine().toString());
 				}
 				ss.close();
 			} catch (FileNotFoundException e) {
@@ -58,7 +63,7 @@ public class Report {
 	public void search(Integer invoiceNo) {
 		File directoryPath = new File("C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices");
 		File filesList[] = directoryPath.listFiles();
-		System.out.println("----------------------------------");
+		System.out.println("------------- Invoice No " + invoiceNo + " Details --------------------");
 		for (File file : filesList) {
 			try {
 				Scanner ss = new Scanner(file);
@@ -72,7 +77,7 @@ public class Report {
 
 					}
 					i++;
-					
+
 				}
 				ss.close();
 			} catch (FileNotFoundException e) {

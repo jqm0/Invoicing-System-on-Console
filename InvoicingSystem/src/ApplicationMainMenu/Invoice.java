@@ -95,7 +95,7 @@ public class Invoice {
 		File fileAllReport = new File(
 				"C:\\Users\\Lenovo\\eclipse-workspace\\InvoicingSystem\\Invoices\\allReport" + idInvoice + ".txt");
 		try {
-			FileWriter fw = new FileWriter(fileAllReport);
+			
 			FileWriter fWrite = new FileWriter(fileStatistics);
 			// File for fourth option
 
@@ -105,9 +105,10 @@ public class Invoice {
 			fWrite.close();
 
 			// -------------------------------------------------------//
+			FileWriter fw = new FileWriter(fileAllReport);
 			// file for 5th option
 			date = new Date();
-
+		
 			fw.write("Invoice No : " + txtFileCount + "\r\n");
 			fw.write("Invoice Date : " + formatter.format(date).toString() + "\r\n");
 			fw.write("Customer Name : " + customerFullName + "\r\n");

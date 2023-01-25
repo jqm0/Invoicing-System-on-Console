@@ -1,0 +1,6 @@
+Invoice No : 2
+Invoice Date : 25/01/2023 03:29:22
+Customer Name : ahmed
+No Of Items : 1
+Total : 2
+Balance : 0

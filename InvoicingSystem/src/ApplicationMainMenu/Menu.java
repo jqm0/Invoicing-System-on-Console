@@ -51,7 +51,7 @@ public class Menu {
 							int option2 = sc.nextInt();
 							switch (option2) {
 							case 1:
-								System.out.println("Load Data");
+								shopX.load();
 								break;
 							case 2:
 

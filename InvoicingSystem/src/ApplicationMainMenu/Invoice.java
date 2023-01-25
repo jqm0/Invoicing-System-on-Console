@@ -112,7 +112,7 @@ public class Invoice {
 
 			fw.write("Invoice No : " + txtFileCount + "\r\n");
 			fw.write("Invoice Date : " + formatter.format(date).toString() + "\r\n");
-			fw.write("Customer Name : " + customerFullName.toUpperCase() + "\r\n");
+			fw.write("Customer Name : " + customerFullName + "\r\n");
 			fw.write("No Of Items : " + numberOfItems.toString() + "\r\n");
 			fw.write("Total : " + totalAmount.toString() + "\r\n");
 			fw.write("Balance : " + balance.toString());

@@ -1,15 +1,48 @@
 package ApplicationMainMenu;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Shop {
 	String name;
 	ArrayList<Item> itemList = new ArrayList<Item>();
 	String[] header = new String[4];
 	Integer noOfInvoices;
+
+	public void load() {
+		File file = new File("C:\\\\Users\\\\Lenovo\\\\eclipse-workspace\\\\InvoicingSystem\\\\items\\\\item.txt");
+		try {
+			Scanner ss = new Scanner(file);
+			int lineCount = 0;
+			Item itemX = new Item();
+			while (ss.hasNextLine()) {
+				
+				if (lineCount % 5 == 0) {
+					itemX.name = ss.nextLine();
+				} else if (lineCount % 5 == 1) {
+					itemX.id = Integer.parseInt(ss.nextLine());
+				} else if (lineCount % 5 == 2) {
+					itemX.quantity = Integer.parseInt(ss.nextLine());
+				} else if (lineCount % 5 == 3) {
+					itemX.unitPrice = Integer.parseInt(ss.nextLine());
+				} else if (lineCount % 5 == 4) {
+					itemX.qtyAmountPrice = Integer.parseInt(ss.nextLine());
+					itemList.add(itemX);
+				}
+				
+				lineCount++;
+			}
+			
+			ss.close();
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 	public void setShopName(String shopName) {
 		this.name = shopName;
@@ -33,12 +66,11 @@ public class Shop {
 			}
 
 			fw.close();
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 	}
 
 	public void deleteItem(String itemToBeDeleted) {

@@ -1,6 +1,6 @@
-Invoice No : 5
-Invoice Date : 24/01/2023 04:53:53
-Customer Name : 1
+Invoice No : 1
+Invoice Date : 24/01/2023 21:56:18
+Customer Name : 3
 No Of Items : 1
-Total : 1
-Balance : 1
+Total : 4
+Balance : 18
